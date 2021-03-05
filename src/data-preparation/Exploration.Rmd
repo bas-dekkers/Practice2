@@ -1,0 +1,55 @@
+---
+title: "Exploration"
+author: "Bas Dekkers"
+date: "3-3-2021"
+output: html_document
+---
+## Instal packages
+
+```{r}
+#packages
+library(dplyr)
+```
+
+## Loading the data
+
+```{r}
+airbnb <- read.csv("../../gen/data-preparation/temp/df_merged_airbnb.csv", header = TRUE, sep = ",")
+```
+
+## Cleaning the data
+
+```{r}
+#Remove complete duplicates
+airbnb <- airbnb %>% filter(!duplicated(airbnb))
+#Which there are non, because it will all be partial duplicates
+```
+
+```{r}
+#Remove partial duplicates
+airbnb <- airbnb %>% group_by(id, host_id) %>% slice(from =0, to =1)
+```
+
+```{r}
+#Removing columns with no added value
+airbnb <- select(airbnb, -1, -6)
+#The removed columns are the X and the neighborhood. The first because of the lack of added value and the second because there were only missing observations. 
+```
+
+\
+## Some basic analysis 
+```{r}
+summary(airbnb)
+```
+
+\
+
+```{r}
+head(airbnb)
+```
+
+```{r}
+tail(airbnb)
+```
+
+

@@ -3,3 +3,5 @@
 # is on a single machine, could directly access data from data directory)
 file.copy("./data/dataset1/dataset1.csv","./gen/data-preparation/input/dataset1.csv")
 file.copy("./data/dataset2/dataset2.csv","./gen/data-preparation/input/dataset2.csv")
+file.copy("./data/dataset3/listings.csv", "./gen/data-preparation/input/listings.csv")
+file.copy("./data/dataset4/reviews.csv", "./gen/data-preparation/input/reviews.csv")
